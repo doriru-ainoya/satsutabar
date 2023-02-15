@@ -95,7 +95,7 @@ public class Animation extends JFrame {
             //Handle exception
         }
         
-        message.setText("¥" + Integer.toString(count*3) + "0,000");
+        message.setText("￥" + Integer.toString(count*3) + "0,000");
         message.setForeground(Color.red);
         message.setSize(1200, 500);
         
