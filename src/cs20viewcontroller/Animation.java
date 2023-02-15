@@ -50,20 +50,13 @@ public class Animation extends JFrame {
 
     public void playGif(int count) {
         window.getContentPane().removeAll();
-        Path p = Paths.get("data/money_shower.gif");
-        String path = p.toAbsolutePath().toString();
-        File f = new File(path);
 
         URL url;
         ImageIcon imageIcon = null;
-        try {
-            url = f.toURI().toURL();
-            imageIcon = new ImageIcon(url);
-            Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-            imageIcon.setImage(imageIcon.getImage().getScaledInstance(d.width, d.height, Image.SCALE_DEFAULT));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Animation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        url = Animation.class.getResource("/money_shower.gif");
+        imageIcon = new ImageIcon(url);
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(d.width, d.height, Image.SCALE_DEFAULT));
 
         label = new JLabel(imageIcon);
 
@@ -82,11 +75,9 @@ public class Animation extends JFrame {
         message = new JLabel();
         Font font = null;
         try {
-            Path pf = Paths.get("data/06TogeGothic-Bold.otf");
-            String pathf = pf.toAbsolutePath().toString();
-            File ff = new File(pathf);
             
-            font = Font.createFont(Font.TRUETYPE_FONT, ff);
+            
+            font = Font.createFont(Font.TRUETYPE_FONT, Animation.class.getResourceAsStream("/06TogeGothic-Bold.otf"));
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font);
             font = new Font(font.getFontName(), Font.BOLD, 150);

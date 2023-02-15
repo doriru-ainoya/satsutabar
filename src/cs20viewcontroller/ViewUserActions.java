@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
 
 /**
  * ViewUserActions is a class that contains actions users can trigger.
@@ -58,12 +59,8 @@ public class ViewUserActions {
             count++;
             animation.playGif(count);
             try {
-                Path p = Paths.get("data/demo.wav");
-                String path = p.toAbsolutePath().toString();
-//                md.printError(path);
-                File f = new File(path);
                 
-                URL url = f.toURI().toURL();
+                URL url = url = Animation.class.getResource("/demo.wav");
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(url));
                 clip.start();
